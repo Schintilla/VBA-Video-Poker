@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b3d2e">
+  <title>Video Poker — Web Edition</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Video Poker home"><span class="brand-mark">♠</span> VIDEO POKER <small>WEB EDITION</small></a>
+    <nav aria-label="Game navigation">
+      <a href="#game">Game</a><a href="#stats">Statistics</a><a href="#paytable">Pay table</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" id="game">
+      <div>
+        <p class="eyebrow">A classic draw poker simulator</p>
+        <h1>Take a seat.</h1>
+        <p>Deal five cards, hold the ones you want, and draw replacements. This web edition starts with a standard 52-card Jacks or Better game.</p>
+      </div>
+      <div class="credit-box"><span>YOUR CREDITS</span><strong id="credits">100</strong></div>
+    </section>
+
+    <section class="table" aria-label="Video poker game">
+      <div class="table-head">
+        <div><span class="eyebrow">CURRENT HAND</span><h2 id="hand-status" aria-live="polite">Ready when you are</h2></div>
+        <div class="bet-control"><label for="bet">Bet</label><select id="bet"><option value="1">1 credit</option><option value="2">2 credits</option><option value="3">3 credits</option><option value="4">4 credits</option><option value="5" selected>5 credits</option></select></div>
+      </div>
+      <div class="cards" id="cards" aria-label="Your cards"></div>
+      <div class="controls">
+        <button class="button primary" id="deal-button">Deal</button>
+        <button class="button secondary" id="hold-button" disabled>Hold winning hand</button>
+        <div class="autoplay"><label for="auto-count">Auto-play</label><input id="auto-count" type="number" min="1" max="10000" value="100"><button class="button secondary" id="auto-button">Run</button></div>
+      </div>
+      <p class="message" id="message" aria-live="polite">Choose your bet, then deal.</p>
+      <div class="table-foot"><span>Jacks or Better · single deck · no Joker</span><button class="text-button" id="reset-button">Reset session statistics</button></div>
+    </section>
+
+    <section class="stats-section" id="stats">
+      <div class="section-heading"><div><p class="eyebrow">SESSION OVERVIEW</p><h2>How are you playing?</h2></div><span class="muted">Statistics are stored for this browser session.</span></div>
+      <div class="stat-grid">
+        <article class="stat-card"><span>Hands played</span><strong id="plays">0</strong></article>
+        <article class="stat-card"><span>Winning hands</span><strong id="wins">0</strong></article>
+        <article class="stat-card"><span>Win rate</span><strong id="win-rate">0%</strong></article>
+        <article class="stat-card"><span>Credits won</span><strong id="credits-won">0</strong></article>
+      </div>
+      <div class="chart-grid">
+        <article class="chart-card"><h3>Credits over time</h3><canvas id="bankroll-chart" aria-label="Line chart showing credits over time"></canvas></article>
+        <article class="chart-card"><h3>Winning hands</h3><canvas id="hands-chart" aria-label="Bar chart showing winning hand counts"></canvas></article>
+      </div>
+    </section>
+
+    <section class="paytable-section" id="paytable">
+      <div class="section-heading"><div><p class="eyebrow">JACKS OR BETTER</p><h2>Pay table</h2></div><span class="muted">Payouts per credit bet</span></div>
+      <div class="paytable" id="paytable-list"></div>
+      <p class="fine-print">The royal flush pays 250 credits per credit bet for bets of 1–4, and 4,000 credits at a 5-credit bet. This is a simplified web recreation; its pay table and play strategy may differ from the original workbook's configurable tables.</p>
+    </section>
+  </main>
+  <footer>For entertainment and probability learning only. No real money or gambling transactions.</footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
